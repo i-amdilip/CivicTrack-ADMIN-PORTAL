@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { PortalLayout } from './components/PortalLayout';
-import { SignInView } from './components/SignInView';
 import { PortalProvider, usePortal } from './context/PortalContext';
 import { ActivityLogsPage } from './pages/ActivityLogsPage';
 import { AnalyticsPage } from './pages/AnalyticsPage';
@@ -19,18 +18,14 @@ import { UserManagementPage } from './pages/UserManagementPage';
 const PortalRoutes: React.FC = () => {
   const { isAuthenticated, isLoading } = usePortal();
 
-  if (isLoading && !isAuthenticated) {
+  if (isLoading || !isAuthenticated) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#F5F6F8]">
-        <div className="rounded-md border border-[#E5E7EB] bg-white px-6 py-4 text-xs font-medium text-[#687385]">
+      <div className="flex min-h-screen items-center justify-center bg-[#F3F5F8]">
+        <div className="rounded-xl border border-[#E8ECF2] bg-white px-6 py-4 text-xs font-medium text-[#64748B] shadow-xs">
           Initializing CivicTrack Government Administration Portal...
         </div>
       </div>
     );
-  }
-
-  if (!isAuthenticated) {
-    return <SignInView />;
   }
 
   return (

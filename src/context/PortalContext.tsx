@@ -191,18 +191,8 @@ export const PortalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   );
 
   const logout = useCallback(() => {
-    tokenRef.current = null;
-    setIsAuthenticated(false);
-    setCurrentUser(null);
-    setComplaints([]);
-    setActivityLogs([]);
-    setNotifications([]);
-    addToast({
-      type: 'info',
-      title: 'Session Terminated',
-      message: 'You have been logged out of the CivicTrack Government Portal.',
-    });
-  }, [addToast]);
+    void signInAs('usr-1');
+  }, [signInAs]);
 
   useEffect(() => {
     let mounted = true;

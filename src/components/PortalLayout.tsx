@@ -8,7 +8,6 @@ import {
   Gauge,
   Landmark,
   LayoutDashboard,
-  LogOut,
   Map as MapIcon,
   Menu,
   Search,
@@ -42,7 +41,6 @@ export const PortalLayout: React.FC<{ children: React.ReactNode }> = ({ children
     toasts,
     dismissToast,
     signInAs,
-    logout,
     markAllNotificationsRead,
   } = usePortal();
 
@@ -276,23 +274,6 @@ export const PortalLayout: React.FC<{ children: React.ReactNode }> = ({ children
             );
           })}
         </nav>
-
-        {/* Bottom Logout */}
-        <div className="shrink-0 pb-6 pt-3">
-          <button
-            type="button"
-            onClick={logout}
-            title={compact ? 'Logout' : undefined}
-            className={
-              compact
-                ? 'mx-2.5 flex w-[calc(100%-20px)] items-center justify-center rounded-xl py-2.5 text-white/85 hover:bg-white/10 hover:text-white transition-colors'
-                : 'ml-4 flex w-[calc(100%-16px)] items-center gap-3.5 rounded-l-full py-2.5 pl-5 pr-4 text-[13.5px] font-medium text-white/85 hover:bg-white/10 hover:text-white transition-colors whitespace-nowrap'
-            }
-          >
-            <LogOut className="h-[18px] w-[18px] shrink-0" />
-            {!compact && <span>Logout</span>}
-          </button>
-        </div>
       </div>
     );
   };
@@ -551,20 +532,6 @@ export const PortalLayout: React.FC<{ children: React.ReactNode }> = ({ children
                             </button>
                           ))}
                         </div>
-                      </div>
-
-                      <div className="p-2">
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setProfileOpen(false);
-                            logout();
-                          }}
-                          className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-xs font-medium text-[#DC2626] hover:bg-[#FEF2F2] transition-colors"
-                        >
-                          <LogOut className="h-3.5 w-3.5" />
-                          <span>Sign Out of Portal</span>
-                        </button>
                       </div>
                     </div>
                   )}
